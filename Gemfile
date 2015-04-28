@@ -36,7 +36,7 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 
 gem 'carrierwave'
-gem 'fog-aws'
+gem 'fog'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap'
@@ -60,5 +60,7 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+
+  gem 'dotenv-rails'
 end
 

@@ -1,7 +1,7 @@
 class Rsvp < ActiveRecord::Base
 
-  scope :responded, where("responded_at IS NOT NULL")
-  scope :attending, where(attending: true)
+  scope :responded, -> { where("responded_at IS NOT NULL") }
+  scope :attending, -> { where(attending: true) }
 
   validates :code, presence: true
   validate :attending_number_on_accept
@@ -52,10 +52,4 @@ class Rsvp < ActiveRecord::Base
     true
   end
 
-  include S3FileAttachable
-  has_one_s3_file :qrcode, {
-    bucket:   "media.chingr.com",
-    path:     Proc.new{|s3_file| "upload/#{Rails.env}/qrcodes/"},
-    options:  {acl: :public_read}
-  }
 end
