@@ -1,0 +1,21 @@
+$(function(){
+  $('body').on('click', '#charge', function(evt){
+    var token = function(res){
+      var $input = $('<input type=hidden name="honeymoon_payment[card]" />').val(res.id);
+      $('#new_honeymoon_payment').append($input).submit();
+    };
+
+    var amount = parseInt($('#honeymoon_payment_amount').val()) * 100;
+    StripeCheckout.open({
+      key:         '<%= Rails.application.secrets.stripe_publishable_key %>',
+      amount:      amount,
+      currency:    'usd',
+      name:        'Jeff Ching',
+      description: 'Honeymoon Fund',
+      panelLabel:  'Checkout',
+      token:       token
+    });
+
+    return false;
+  });
+});

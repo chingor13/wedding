@@ -4,7 +4,6 @@ class HoneymoonPaymentsController < ApplicationController
   end
 
   def new
-    require_javascript "https://checkout.stripe.com/v2/checkout.js"
     @honeymoon_payment = HoneymoonPayment.new
   end
 

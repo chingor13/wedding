@@ -1,29 +1,8 @@
+= javascript_include_tag "https://checkout.stripe.com/v2/checkout.js"
+
 h1 New Payment
 
 = simple_form_for @honeymoon_payment do |form|
   = form.input :amount
   button[id="charge" class="btn btn-primary"]
     | Charge
-
-javascript:
-  $(function(){
-    $('#charge').click(function(){
-      var token = function(res){
-        var $input = $('<input type=hidden name="honeymoon_payment[card]" />').val(res.id);
-        $('#new_honeymoon_payment').append($input).submit();
-      };
-
-      var amount = parseInt($('#honeymoon_payment_amount').val()) * 100;
-      StripeCheckout.open({
-        key:         '#{$stripe_config['publishable_key']}',
-        amount:      amount,
-        currency:    'usd',
-        name:        'Jeff Ching',
-        description: 'Honeymoon Fund',
-        panelLabel:  'Checkout',
-        token:       token
-      });
-
-      return false;
-    });
-  });
