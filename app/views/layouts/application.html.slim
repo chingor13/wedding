@@ -1,5 +1,5 @@
 doctype html
-html
+html[lang="en-us"]
   head
     title Jeff &amp; Diana Wedding
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
@@ -7,4 +7,35 @@ html
     = csrf_meta_tags
   body
     .container
-      = yield
+      .row
+        .col-md-3
+          h3 Information
+          ul.nav.nav-pills.nav-stacked
+            li
+              = link_to "Homepage", root_path
+            li
+              = link_to "Our Story", our_story_path
+            li
+              = link_to "Wedding Party", party_path
+            li
+              = link_to "Family", family_path
+            li
+              = link_to "Events", events_path
+            li
+              = link_to "Registry", registry_path
+            li
+              = link_to "Honeymoon", honeymoon_path
+          h3 Logistics
+          ul.nav.nav-pills.nav-stacked
+            li
+              = link_to "RSVP", rsvps_path
+            li
+              = link_to "Directions", directions_path
+            li
+              = link_to "Contact Us", contact_us_path
+        .col-md-3
+          = yield
+      footer
+        p
+          = pluralize((Date.new(2015, 8, 8) - Date.today).to_i, "day")
+          |  from now.

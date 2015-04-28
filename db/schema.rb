@@ -16,6 +16,18 @@ ActiveRecord::Schema.define(version: 20150428055103) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "addresses", force: :cascade do |t|
+    t.integer  "owner_id",   null: false
+    t.string   "owner_type", null: false
+    t.string   "line1",      null: false
+    t.string   "line2"
+    t.string   "city",       null: false
+    t.string   "state",      null: false
+    t.string   "zip",        null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "honeymoon_payments", force: :cascade do |t|
     t.text     "notes"
     t.string   "description"

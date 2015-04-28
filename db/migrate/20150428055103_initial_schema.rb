@@ -20,5 +20,16 @@ class InitialSchema < ActiveRecord::Migration
       t.integer :created_by_id
       t.timestamps
     end
+
+    create_table :addresses do |t|
+      t.integer :owner_id, null: false
+      t.string :owner_type, null: false
+      t.string :line1, null: false
+      t.string :line2
+      t.string :city, null: false
+      t.string :state, null: false
+      t.string :zip, null: false
+      t.timestamps
+    end
   end
 end
