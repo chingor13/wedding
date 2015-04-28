@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
 
   before_filter :authenticate_user!
   attr_accessor :current_user
+  helper_method :current_user
 
   protected
 
