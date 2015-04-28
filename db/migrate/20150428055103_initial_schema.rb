@@ -7,6 +7,7 @@ class InitialSchema < ActiveRecord::Migration
       t.text :notes
       t.integer :total, default: 0
       t.string :code, null: false
+      t.string :qrcode
       t.integer :max_attending, null: false, default: 1
       t.datetime :responded_at
       t.datetime :created_at

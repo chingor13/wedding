@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 20150428055103) do
     t.text     "notes"
     t.integer  "total",         default: 0
     t.string   "code",                          null: false
+    t.string   "qrcode"
     t.integer  "max_attending", default: 1,     null: false
     t.datetime "responded_at"
     t.datetime "created_at"

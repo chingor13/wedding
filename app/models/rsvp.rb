@@ -10,7 +10,7 @@ class Rsvp < ActiveRecord::Base
   before_validation :generate_code, on: :create
   after_create :generate_qr_code
 
-  mount_uploader :qr_code, QrCodeUploader
+  mount_uploader :qrcode, QrCodeUploader
 
   has_one :address, class_name: 'Address', as: :owner, inverse_of: :owner
   accepts_nested_attributes_for :address
@@ -40,15 +40,13 @@ class Rsvp < ActiveRecord::Base
   end
 
   def generate_qr_code
-    qr = RQRCode::QRCode.new("http://chingr.com/wedding/rsvp/#{code}/reply", :size => 8, :level => :h )
-    blob = qr.to_img.resize(300,300).to_blob
-    self.qrcode_attributes = {
-      name: email_address,
-      data: blob,
-      size: blob.size,
-      content_type: "image/png"
-    }
-    self.qrcode.save
+    qr = RQRCode::QRCode.new("http://wedding.chingr.com/rsvp/#{code}/reply", size: 8, level: :h )
+    blob = qr.to_img.resize(300,300)
+    file = Tempfile.new(["qrcode", ".png"])
+    file.write(blob.to_blob)
+    file.close
+    self.qrcode = file
+    self.save
     true
   end
 
