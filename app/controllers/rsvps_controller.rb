@@ -4,7 +4,7 @@ class RsvpsController < ApplicationController
   before_filter :load_rsvp, only: [:show, :reply, :respond]
 
   def index
-    @rsvps = Rsvp.all if can? :manage, Rsvp
+    @rsvps = Rsvp.all
   end
 
   def search
@@ -37,8 +37,6 @@ class RsvpsController < ApplicationController
     if @rsvp.update_attributes(reply_params)
       redirect_to registry_path, flash: {success: "Thanks for RSVPing!"}
     else
-      pp @rsvp.errors.full_messages
-      pp @rsvp
       render :reply
     end
   end

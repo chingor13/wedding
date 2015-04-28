@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20150428055103) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "wedding_honeymoon_payments", force: :cascade do |t|
+  create_table "honeymoon_payments", force: :cascade do |t|
     t.text     "notes"
     t.string   "description"
     t.string   "charge_identifier"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20150428055103) do
     t.datetime "updated_at"
   end
 
-  create_table "wedding_rsvps", force: :cascade do |t|
+  create_table "rsvps", force: :cascade do |t|
     t.string   "name",                          null: false
     t.string   "email_address",                 null: false
     t.boolean  "attending",     default: false
