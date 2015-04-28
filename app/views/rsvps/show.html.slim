@@ -1,0 +1,11 @@
+h1 RSVP
+
+p Name: #{@rsvp.name}
+p Email: #{@rsvp.email_address}
+
+- if @rsvp.qrcode
+  = image_tag @rsvp.qrcode.url, style: ""
+
+- if @rsvp.address
+  h2 Address
+  = render @rsvp.address

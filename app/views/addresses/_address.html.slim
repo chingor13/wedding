@@ -1,0 +1,7 @@
+address
+  = address.line1
+  br
+  - if address.line2.present?
+    = address.line2
+    br
+  | #{address.city}, #{address.state} #{address.zip}

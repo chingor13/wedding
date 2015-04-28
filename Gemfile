@@ -35,6 +35,13 @@ gem 'aws-sdk', '~> 1.44'
 gem 'omniauth'
 gem 'omniauth-facebook'
 
+gem 'carrierwave'
+gem 'fog-aws'
+
+source 'https://rails-assets.org' do
+  gem 'rails-assets-bootstrap'
+end
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

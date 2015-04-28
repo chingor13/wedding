@@ -1,0 +1,33 @@
+h1 RSVP
+
+= render partial: "search_form"
+
+= link_to new_rsvp_path, class: "btn admin-shown" do
+  | New Invitation
+
+- if @rsvps.present?
+  h2 Invites
+  table.table.table-striped
+    thead
+      tr
+        th
+        th Name
+        th Email
+        th
+    tbody
+      - @rsvps.each do |rsvp|
+        tr
+          td
+            - if rsvp.responded?
+              - if rsvp.attending?
+                span.badge.badge-success = rsvp.total
+              - else
+                span.badge.badge-important 0
+            - else
+              span.badge.badge-warning ?
+          td = link_to rsvp.name, rsvp
+          td = rsvp.email_address
+          td
+            - if rsvp.notes.present?
+              = link_to "#", title: rsvp.notes, data: {toggle: "tooltip"} do
+                i.icon-comment &nbsp;

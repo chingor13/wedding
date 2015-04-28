@@ -1,0 +1,31 @@
+h1 #{@rsvp.name}, will you be attending?
+
+= simple_form_for([:respond, @rsvp]) do |form|
+  = form.input :attending, as: :radio_buttons, label: false
+
+  .js-how-many
+    = form.input :total, label: "Total number attending (Max #{p@rsvp.max_attending})", input_html: {class: "span1"}
+
+  = form.input :notes, input_html: {rows: 4, class: "span6"}
+
+  .form-actions
+    = form.button :submit, "Respond", class: "btn btn-primary"
+
+javascript:
+  $(function(){
+    function showHideTotal(evt) {
+      var $radio;
+      if(evt) {
+        $radio = $(evt.target);
+      } else {
+        $radio = $("input[name='rsvp[attending]']:checked");
+      }
+      if($radio.val() == "true") {
+        $(".js-how-many").show();
+      } else {
+        $(".js-how-many").hide();
+      }
+    }
+    $("input[name='rsvp[attending]']").change(showHideTotal);
+    showHideTotal();
+  });

@@ -1,0 +1,4 @@
+= form_for(Rsvp.new, url: search_rsvps_path, method: :get) do |form|
+  p Search for your RSVP by email or name:
+  = form.text_field :email_address, class: "input-large search-query", placeholder: "Email Address -OR- Name"
+  = form.submit "Search", class: "btn"

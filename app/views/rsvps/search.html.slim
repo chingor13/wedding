@@ -1,0 +1,11 @@
+h1 Search for Invite
+
+- if @rsvps.present?
+  ul
+    - @rsvps.each do |rsvp|
+      li
+        = link_to rsvp.name, rsvp
+- else
+  p[class="alert alert-error"] Couldn't find your invite.
+
+= render partial: "search_form"
