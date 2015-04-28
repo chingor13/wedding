@@ -29,7 +29,6 @@ gem 'slim'
 gem 'simple_form'
 gem 'rqrcode_png'
 
-gem 'dalli'
 gem 'aws-sdk', '~> 1.44'
 
 gem 'omniauth'

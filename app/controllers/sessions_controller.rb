@@ -7,7 +7,8 @@ class SessionsController < ApplicationController
 
   # GET /logout
   def destroy
-
+    logout_user
+    redirect_to root_path
   end
 
   # GET /auth/:provider/callback
