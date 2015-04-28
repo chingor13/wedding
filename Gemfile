@@ -38,6 +38,8 @@ gem 'omniauth-facebook'
 gem 'carrierwave'
 gem 'fog'
 
+gem 'rails_12factor'
+
 source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap'
 end
