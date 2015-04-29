@@ -44,7 +44,35 @@ class RsvpTest < CapybaraTest
   end
 
   def test_can_rsvp
+    ken = Rsvp.fixture(:ken)
+    assert_equal false, ken.responded?
+    visit reply_rsvp_path(ken)
 
+    assert has_text?("will you be attending?")
+    choose 'Yes'
+
+    fill_in "Total number attending", with: '3'
+    fill_in "Notes", with: "See you there slugger!"
+    click_on "Respond"
+
+    assert has_selector?('.alert.alert-success')
+    assert has_selector?('h1', text: 'Registry'), 'should be on registry page after rsvping'
+  end
+
+  def test_can_edit_rsvp
+    mark = Rsvp.fixture(:mark)
+    assert mark.responded?
+    visit reply_rsvp_path(mark)
+
+    assert has_text?("will you be attending?")
+    choose 'Yes'
+
+    fill_in "Total number attending", with: '1'
+    fill_in "Notes", with: "Actually I can make it after all"
+    click_on "Respond"
+
+    assert has_selector?('.alert.alert-success')
+    assert has_selector?('h1', text: 'Registry'), 'should be on registry page after rsvping'
   end
 
 end

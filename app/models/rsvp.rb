@@ -36,7 +36,7 @@ class Rsvp < ActiveRecord::Base
   end
 
   def generate_code
-    self.code ||= UUID.generate
+    self.code ||= UUID.generate.first(8)
   end
 
   def generate_qr_code
