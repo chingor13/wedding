@@ -37,7 +37,9 @@ gem 'omniauth-facebook'
 gem 'carrierwave'
 gem 'fog'
 
-gem 'rails_12factor'
+group :production do
+  gem 'rails_12factor'
+end
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap'
@@ -65,3 +67,7 @@ group :development, :test do
   gem 'dotenv-rails'
 end
 
+group :test do
+  gem 'capybara'
+  gem 'poltergeist'
+end
