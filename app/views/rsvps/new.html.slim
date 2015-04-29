@@ -5,8 +5,8 @@ h1 Invite
   = form.input :max_attending
 
   = form.fields_for :address do |address|
-    = address.input :line1
-    = address.input :line2
+    = address.input :line1, label: 'Line 1'
+    = address.input :line2, label: 'Line 2'
     = address.input :city
     = address.input :state
     = address.input :zip

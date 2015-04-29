@@ -25,7 +25,7 @@ class RsvpsController < ApplicationController
   def create
     @rsvp = Rsvp.new(rsvp_params)
     if @rsvp.save
-      # redirect_to @rsvp
+      flash[:success] = "Successfully created invite."
       redirect_to rsvps_path
     else
       render :new
