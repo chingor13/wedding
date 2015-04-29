@@ -10,13 +10,25 @@ class ApplicationController < ActionController::Base
   protected
 
   def authenticate_user!
-    @current_user = session.has_key?(:user_id) ?
-      User.find_by_id(session[:user_id]) :
-      nil
+    @current_user = User.find_by_id(session[:user_id]) ||
+      AnonymousUser.instance
+  end
+
+  def authorize!
+    return if current_user.authenticated?
+    
+    redirect_to login_path, flash: {error: "You must log in before continuing."}
+  end
+
+  def authorize_as_admin!
+    return if current_user.admin?
+
+    redirect_to root_path, flash: {error: "You do not have permission to view this page."}
   end
 
   def login_user(user)
     session[:user_id] = user.id
+    @current_user = user
   end
 
   def logout_user

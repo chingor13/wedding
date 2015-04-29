@@ -1,14 +1,28 @@
 require 'test_helper'
 
-class RsvpTest < ActionDispatch::IntegrationTest
-  include Capybara::DSL
+class RsvpTest < CapybaraTest
 
-  def test_foo
-    visit '/'
-    assert has_text?("Jeff & Diana's Wedding")
+  def test_admin_can_view_invites
+    login_user(:jeff)
+
+    visit '/rsvp'
+    rsvps = Rsvp.all
+    rsvps.each do |rsvp|
+      assert has_link?(rsvp.name)
+    end
+  end
+
+  def test_normal_user_cannot_view_invites
+    visit '/rsvp'
+    rsvps = Rsvp.all
+    rsvps.each do |rsvp|
+      assert has_no_link?(rsvp.name)
+    end
   end
 
   def test_can_create_rsvp
+    login_user(:jeff)
+
     visit '/rsvp'
     assert has_selector?('h1', text: 'RSVP')
 

@@ -1,0 +1,29 @@
+ken:
+  name: Ken Griffey
+  email_address: ken@griffey.com
+  max_attending: 4
+  code: kenscode
+  qrcode: qr_ken.png
+  created_at: <%= Time.now - 10.days %>
+
+omar: # Omar responded that they would attend
+  name: Omar Vizquel
+  email_address: omar@vizquel.com
+  max_attending: 2
+  attending: true
+  total: 2
+  code: omarscode
+  qrcode: qr_omar.png
+  responded_at: <%= Time.now - 2.days %>
+  created_at: <%= Time.now - 10.days %>
+
+mark: # Mark cannot attend
+  name: Mark McLemore
+  email_address: mark@mclemore.com
+  max_attending: 2
+  attending: false
+  code: markscode
+  notes: "Sorry buddy, we can't make it"
+  qrcode: qr_mark.png
+  responded_at: <%= Time.now - 1.week %>
+  created_at: <%= Time.now - 10.days %>

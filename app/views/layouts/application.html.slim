@@ -40,5 +40,5 @@ html[lang="en-us"]
         p
           = pluralize((Date.new(2015, 8, 8) - Date.today).to_i, "day")
           |  from now.
-        - if current_user
+        - if current_user.authenticated?
           p Logged in as #{current_user.name}

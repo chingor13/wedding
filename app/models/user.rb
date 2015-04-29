@@ -41,5 +41,12 @@ class User < ActiveRecord::Base
     })
   end
 
+  def authenticated?
+    true
+  end
+
+  def admin?
+    "ching.jeff@gmail.com" == email_address
+  end
 
 end

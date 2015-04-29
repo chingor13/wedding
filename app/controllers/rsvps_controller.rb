@@ -1,10 +1,13 @@
 class RsvpsController < ApplicationController
 
-  before_filter :authenticate_user!, except: [:index, :search, :reply, :respond]
+  before_filter :authorize!, only: [:new, :create, :show]
+  before_filter :authorize_as_admin!, only: [:new, :create, :show]
   before_filter :load_rsvp, only: [:show, :reply, :respond]
 
   def index
-    @rsvps = Rsvp.all
+    if current_user.admin?
+      @rsvps = Rsvp.all
+    end
   end
 
   def search
@@ -25,8 +28,7 @@ class RsvpsController < ApplicationController
   def create
     @rsvp = Rsvp.new(rsvp_params)
     if @rsvp.save
-      flash[:success] = "Successfully created invite."
-      redirect_to rsvps_path
+      redirect_to rsvps_path, flash: {success: "Successfully created invite."}
     else
       render :new
     end

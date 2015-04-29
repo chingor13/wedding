@@ -1,0 +1,5 @@
+jeff:
+  user: jeff
+  uid: jeff
+  provider: facebook
+  token: sometoken
