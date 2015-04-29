@@ -20,11 +20,11 @@ h1 RSVP
           td
             - if rsvp.responded?
               - if rsvp.attending?
-                span.badge.badge-success = rsvp.total
+                span.badge.bg-success = rsvp.total
               - else
-                span.badge.badge-important 0
+                span.glyphicon.glyphicon-minus.text-danger aria-hidden="true"
             - else
-              span.badge.badge-warning ?
+              span.badge.bg-danger ?
           td = link_to rsvp.name, rsvp
           td = rsvp.email_address
           td
