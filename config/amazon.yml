@@ -3,8 +3,8 @@ development:
   secret_access_key: <%= ENV['AWS_SECRET_ACCESS_KEY'] %>
 
 test:
-  access_key: <%= ENV['AWS_ACCESS_KEY'] %>
-  secret_access_key: <%= ENV['AWS_SECRET_ACCESS_KEY'] %>
+  access_key: amazonaccesskey
+  secret_access_key: amazonsecretkey
 
 production:
   access_key: <%= ENV['AWS_ACCESS_KEY'] %>

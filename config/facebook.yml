@@ -3,8 +3,8 @@ development:
   app_secret: <%= ENV['FACEBOOK_APP_SECRET'] %>
 
 test:
-  app_id: <%= ENV['FACEBOOK_APP_ID'] %>
-  app_secret: <%= ENV['FACEBOOK_APP_SECRET'] %>
+  app_id: facebookappid
+  app_secret: facebooksecret
 
 production:
   app_id: <%= ENV['FACEBOOK_APP_ID'] %>
