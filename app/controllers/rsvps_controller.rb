@@ -5,8 +5,15 @@ class RsvpsController < ApplicationController
   before_filter :load_rsvp, only: [:show, :reply, :respond]
 
   def index
-    if current_user.admin?
-      @rsvps = Rsvp.all
+    @rsvps = if current_user.admin?
+      Rsvp.all
+    else
+      []
+    end
+
+    respond_to do |format|
+      format.json
+      format.html
     end
   end
 

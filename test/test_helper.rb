@@ -9,6 +9,8 @@ CarrierWave.configure do |config|
   config.root = File.join(Rails.root, 'tmp')
 end
 
+QrCodeUploader.storage :file
+
 # mocking omniauth logins
 OmniAuth.config.test_mode = true
 
