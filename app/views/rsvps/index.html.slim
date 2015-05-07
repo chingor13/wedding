@@ -32,3 +32,5 @@ h1 RSVP
             - if rsvp.notes.present?
               = link_to "#", title: rsvp.notes, data: {toggle: "tooltip"} do
                 i.icon-comment &nbsp;
+            - if current_user.admin?
+              = link_to "Edit", edit_rsvp_path(rsvp)

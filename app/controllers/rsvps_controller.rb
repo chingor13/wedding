@@ -1,8 +1,8 @@
 class RsvpsController < ApplicationController
 
-  before_filter :authorize!, only: [:new, :create, :show]
-  before_filter :authorize_as_admin!, only: [:new, :create, :show]
-  before_filter :load_rsvp, only: [:show, :reply, :respond]
+  before_filter :authorize!, only: [:new, :create, :show, :edit, :update]
+  before_filter :authorize_as_admin!, only: [:new, :create, :show, :edit, :update]
+  before_filter :load_rsvp, only: [:show, :reply, :respond, :edit, :update]
 
   def index
     @rsvps = if current_user.admin?
@@ -30,6 +30,17 @@ class RsvpsController < ApplicationController
   def new
     @rsvp = Rsvp.new
     @rsvp.build_address
+  end
+
+  def edit
+  end
+
+  def update
+    if @rsvp.update_attributes(rsvp_params)
+      redirect_to @rsvp, flash: {success: "Successfully updated invite."}
+    else
+      render :edit
+    end
   end
 
   def create
