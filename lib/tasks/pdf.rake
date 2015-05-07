@@ -12,15 +12,6 @@ task :pdf => :environment do
       @rsvps = rsvps
       @document = Prawn::Document.new(page_layout: :landscape)
 
-      font_families["Lora"] = {
-       :normal => { :file => "./Lora.ttf", :font => "Lora" }
-      }
-      font_families["Optima"] = {
-        normal: { file: "./Optima.ttf", font: "Optima" }
-      }
-      font_families["Latinia"] = {
-        normal: { file: "./Latinia.ttf", font: "Latinia" }
-      }
       font_families["DroidSans"] = {
         normal: { file: "./DroidSans.ttf", font: "DroidSans" }
       }
