@@ -37,6 +37,8 @@ gem 'omniauth-facebook'
 gem 'carrierwave'
 gem 'fog'
 
+gem 'prawn', require: false
+
 group :production do
   gem 'rails_12factor'
 end
