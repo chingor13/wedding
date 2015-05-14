@@ -9,9 +9,6 @@ class HomepagesController < ApplicationController
   def party
   end
 
-  def family
-  end
-
   def registry
   end
 
