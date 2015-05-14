@@ -12,9 +12,6 @@ class HomepagesController < ApplicationController
   def family
   end
 
-  def events
-  end
-
   def registry
   end
 
