@@ -1,7 +1,7 @@
 class RsvpsController < ApplicationController
 
-  before_filter :authorize!, only: [:new, :create, :show, :edit, :update]
-  before_filter :authorize_as_admin!, only: [:new, :create, :show, :edit, :update]
+  before_filter :authorize!, only: [:new, :create, :show, :edit, :update, :print]
+  before_filter :authorize_as_admin!, only: [:new, :create, :show, :edit, :update, :print]
   before_filter :load_rsvp, only: [:show, :reply, :respond, :edit, :update]
 
   def index
@@ -21,7 +21,19 @@ class RsvpsController < ApplicationController
     @rsvps = Rsvp.where(email_address: rsvp_params[:email_address])
   end
 
+  def print
+    @rsvps = Rsvp.find(params[:invite])
+
+    respond_to do |format|
+      format.pdf
+    end
+  end
+
   def show
+    respond_to do |format|
+      format.pdf
+      format.html
+    end
   end
 
   def reply

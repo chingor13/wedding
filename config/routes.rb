@@ -3,7 +3,10 @@ Rails.application.routes.draw do
   resources :honeymoon_payments
 
   resources :rsvps, path: "rsvp" do
-    get :search, on: :collection
+    collection do
+      get :search
+      get :print
+    end
     member do
       get :reply
       patch :respond

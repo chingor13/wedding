@@ -23,6 +23,10 @@ class Rsvp < ActiveRecord::Base
     responded_at.present?
   end
 
+  def url
+    "http://wedding.chingr.com/rsvp/#{code}/reply"
+  end
+
   protected
 
   def attending_number_on_accept
@@ -40,7 +44,7 @@ class Rsvp < ActiveRecord::Base
   end
 
   def generate_qr_code
-    qr = RQRCode::QRCode.new("http://wedding.chingr.com/rsvp/#{code}/reply", size: 8, level: :h )
+    qr = RQRCode::QRCode.new(url, size: 8, level: :h )
     blob = qr.to_img.resize(300,300)
     file = Tempfile.new(["qrcode", ".png"])
     file.write(blob.to_blob)

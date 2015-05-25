@@ -7,30 +7,35 @@ h1 RSVP
     | New Invitation
 
 - if @rsvps.present?
-  h2 Invites
-  table.table.table-striped
-    thead
-      tr
-        th
-        th Name
-        th Email
-        th
-    tbody
-      - @rsvps.each do |rsvp|
+  = form_tag(print_rsvps_path(format: :pdf), method: :get) do
+    h2 Invites
+    table.table.table-striped
+      thead
         tr
-          td
-            - if rsvp.responded?
-              - if rsvp.attending?
-                span.badge.bg-success = rsvp.total
-              - else
-                span.glyphicon.glyphicon-minus.text-danger aria-hidden="true"
-            - else
-              span.badge.bg-danger ?
-          td = link_to rsvp.name, rsvp
-          td = rsvp.email_address
-          td
-            - if rsvp.notes.present?
-              = link_to "#", title: rsvp.notes, data: {toggle: "tooltip"} do
-                i.icon-comment &nbsp;
-            - if current_user.admin?
-              = link_to "Edit", edit_rsvp_path(rsvp)
+          th
+          th Sent
+          th Attending
+          th Name
+          th Email
+          th
+      tbody
+        - @rsvps.each do |rsvp|
+          tr
+            td
+              = check_box_tag "invite[]", rsvp.id, false, id: "invite_#{rsvp.id}"
+            td No
+            td
+              - if rsvp.responded?
+                - if rsvp.attending?
+                  = rsvp.total
+                - else
+                  | No
+            td = link_to rsvp.name, rsvp
+            td = rsvp.email_address
+            td
+              - if rsvp.notes.present?
+                = link_to "#", title: rsvp.notes, data: {toggle: "tooltip"} do
+                  i.glyphicon.glyphicon-info-sign &nbsp;
+              - if current_user.admin?
+                = link_to "Edit", edit_rsvp_path(rsvp)
+    = submit_tag "Print Selected"
