@@ -41,3 +41,8 @@ h1 RSVP
     => submit_tag t("rsvp.commands.print"), class: "btn btn-default"
     => submit_tag t("rsvp.commands.mark_sent"), class: "btn btn-default"
     = submit_tag t("rsvp.commands.mark_unsent"), class: "btn btn-default"
+
+  javascript:
+    $(function() {
+      $('[data-toggle="tooltip"]').tooltip();
+    });
