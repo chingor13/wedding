@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150428151951) do
+ActiveRecord::Schema.define(version: 20150527051809) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 20150428151951) do
     t.integer  "max_attending", default: 1,     null: false
     t.datetime "responded_at"
     t.datetime "created_at"
+    t.boolean  "sent",          default: false
   end
 
   create_table "user_tokens", force: :cascade do |t|

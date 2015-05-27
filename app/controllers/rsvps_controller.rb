@@ -1,12 +1,12 @@
 class RsvpsController < ApplicationController
 
-  before_filter :authorize!, only: [:new, :create, :show, :edit, :update, :print]
-  before_filter :authorize_as_admin!, only: [:new, :create, :show, :edit, :update, :print]
+  before_filter :authorize!, except: [:index, :reply, :respond]
+  before_filter :authorize_as_admin!, except: [:index, :reply, :respond]
   before_filter :load_rsvp, only: [:show, :reply, :respond, :edit, :update]
 
   def index
     @rsvps = if current_user.admin?
-      Rsvp.all
+      Rsvp.order(:id).to_a
     else
       []
     end
@@ -19,6 +19,20 @@ class RsvpsController < ApplicationController
 
   def search
     @rsvps = Rsvp.where(email_address: rsvp_params[:email_address])
+  end
+
+  def bulk
+    scope = Rsvp.where(id: params[:invite])
+    case params[:commit]
+    when I18n.t("rsvp.commands.print")
+      redirect_to print_rsvps_path(format: :pdf, invite: params[:invite])
+    when I18n.t("rsvp.commands.mark_sent")
+      scope.update_all(sent: true)
+      redirect_to rsvps_path, flash: {success: "Marked selected as sent"}
+    when I18n.t("rsvp.commands.mark_unsent")
+      scope.update_all(sent: false)
+      redirect_to rsvps_path, flash: {success: "Marked selected as unsent"}
+    end
   end
 
   def print

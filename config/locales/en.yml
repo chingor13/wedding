@@ -20,4 +20,8 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  rsvp:
+    commands:
+      mark_sent: "Mark Sent"
+      mark_unsent: "Mark Unsent"
+      print: "Print Selected"

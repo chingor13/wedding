@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   resources :rsvps, path: "rsvp" do
     collection do
+      post :bulk
       get :search
       get :print
     end
