@@ -95,7 +95,7 @@ class RsvpsController < ApplicationController
   end
 
   def rsvp_params
-    params.require(:rsvp).permit(:name, :email_address, :max_attending, address_attributes: [:line1, :line2, :city, :state, :zip])
+    params.require(:rsvp).permit(:name, :email_address, :max_attending, address_attributes: [:id, :line1, :line2, :city, :state, :zip])
   end
 
   def reply_params

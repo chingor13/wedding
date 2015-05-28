@@ -2,6 +2,7 @@ h1 RSVP
 
 p Name: #{@rsvp.name}
 p Email: #{@rsvp.email_address}
+p Max Attending: #{@rsvp.max_attending}
 
 - if @rsvp.qrcode
   = image_tag @rsvp.qrcode.url, style: ""

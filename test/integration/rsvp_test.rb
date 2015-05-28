@@ -75,4 +75,18 @@ class RsvpTest < CapybaraTest
     assert has_selector?('h1', text: 'Registry'), 'should be on registry page after rsvping'
   end
 
+  def test_can_modify_an_invite
+    login_user(:jeff)
+
+    ken = Rsvp.fixture(:ken)
+    assert ken.address
+    visit edit_rsvp_path(ken)
+
+    fill_in "Max attending", with: 10
+    click_on "Update Rsvp"
+
+    assert has_selector?('h1', text: 'RSVP')
+    assert has_text?('Max Attending: 10')
+  end
+
 end
