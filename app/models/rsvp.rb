@@ -27,6 +27,13 @@ class Rsvp < ActiveRecord::Base
     "http://wedding.chingr.com/rsvp/#{code}/reply"
   end
 
+  def potential_attending
+    return max_attending unless responded?
+    attending? ?
+      total :
+      0
+  end
+
   protected
 
   def attending_number_on_accept

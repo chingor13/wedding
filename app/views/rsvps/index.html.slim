@@ -15,6 +15,7 @@ h1 RSVP
           th
           th Sent
           th Attending
+          th Max
           th Name
           th Email
           th
@@ -30,6 +31,7 @@ h1 RSVP
                   = rsvp.total
                 - else
                   | No
+            td = rsvp.potential_attending
             td = link_to rsvp.name, rsvp
             td = rsvp.email_address
             td
@@ -38,6 +40,17 @@ h1 RSVP
                   i.glyphicon.glyphicon-info-sign &nbsp;
               - if current_user.admin?
                 = link_to "Edit", edit_rsvp_path(rsvp)
+        tr
+          td
+          td
+            => @rsvps.count(&:sent?)
+            | /
+            =< @rsvps.count
+          td = @rsvps.select(&:attending?).sum(&:total)
+          td = @rsvps.sum(&:potential_attending)
+          td Total
+          td
+          td
     => submit_tag t("rsvp.commands.print"), class: "btn btn-default"
     => submit_tag t("rsvp.commands.mark_sent"), class: "btn btn-default"
     = submit_tag t("rsvp.commands.mark_unsent"), class: "btn btn-default"
