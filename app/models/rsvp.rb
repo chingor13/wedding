@@ -12,7 +12,7 @@ class Rsvp < ActiveRecord::Base
 
   mount_uploader :qrcode, QrCodeUploader
 
-  has_one :address, class_name: 'Address', as: :owner, inverse_of: :owner
+  has_one :address, class_name: 'Address', as: :owner, inverse_of: :owner, dependent: :destroy
   accepts_nested_attributes_for :address
 
   def to_param

@@ -1,8 +1,8 @@
 class RsvpsController < ApplicationController
 
-  before_filter :authorize!, except: [:index, :reply, :respond]
-  before_filter :authorize_as_admin!, except: [:index, :reply, :respond]
-  before_filter :load_rsvp, only: [:show, :reply, :respond, :edit, :update]
+  before_filter :authorize!, except: [:index, :reply, :respond, :destroy]
+  before_filter :authorize_as_admin!, except: [:index, :reply, :respond, :destroy]
+  before_filter :load_rsvp, only: [:show, :reply, :respond, :edit, :update, :destroy]
 
   def index
     @rsvps = if current_user.admin?
@@ -85,6 +85,11 @@ class RsvpsController < ApplicationController
     else
       render :reply
     end
+  end
+
+  def destroy
+    @rsvp.destroy
+    redirect_to rsvps_path, flash: {success: "Successfully deleted invite."}
   end
 
   protected
