@@ -6,7 +6,7 @@ h1 #{@rsvp.name}, will you be attending?
   .js-how-many
     = form.input :total, label: "Total number attending (Max #{p@rsvp.max_attending})", input_html: {class: "span1"}
 
-  = form.input :notes, input_html: {rows: 4, class: "span6"}
+  = form.input :notes, label: "Notes: (dietary restrictions, etc)", input_html: {rows: 4, class: "span6"}
 
   .form-actions
     = form.button :submit, "Respond", class: "btn btn-primary"
