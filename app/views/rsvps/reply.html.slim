@@ -1,5 +1,7 @@
 h1 #{@rsvp.name}, will you be attending?
 
+h2 August 8, 2015 at 5pm
+
 = simple_form_for([:respond, @rsvp]) do |form|
   = form.input :attending, as: :radio_buttons, label: false
 
