@@ -46,8 +46,7 @@ class User < ActiveRecord::Base
   end
 
   def admin?
-    puts email_address
-    ["ching.jeff@gmail.com", "dlui8@u.washington.edu"].include?(email_address)
+    ["ching.jeff@gmail.com", "dianamaelui@gmail.com"].include?(email_address)
   end
 
 end
