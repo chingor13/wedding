@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150527051809) do
+ActiveRecord::Schema.define(version: 20150624063654) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 20150527051809) do
     t.datetime "responded_at"
     t.datetime "created_at"
     t.boolean  "sent",          default: false
+    t.text     "song_requests"
   end
 
   create_table "user_tokens", force: :cascade do |t|

@@ -104,7 +104,7 @@ class RsvpsController < ApplicationController
   end
 
   def reply_params
-    params.require(:rsvp).permit(:total, :attending, :notes)
+    params.require(:rsvp).permit(:total, :attending, :notes, :song_requests)
   end
 
 end

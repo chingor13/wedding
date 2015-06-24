@@ -9,6 +9,7 @@ h2 August 8, 2015 at 5pm
     = form.input :total, label: "Total number attending (Max #{p@rsvp.max_attending})", input_html: {class: "span1"}
 
   = form.input :notes, label: "Notes: (dietary restrictions, etc)", input_html: {rows: 4, class: "span6"}
+  = form.input :song_requests, label: "What songs would you like to hear at the reception?", input_html: {rows: 4, class: "span6"}
 
   .form-actions
     = form.button :submit, "Respond", class: "btn btn-primary"
