@@ -11,5 +11,8 @@ p Max Attending: #{@rsvp.max_attending}
   h2 Address
   = render @rsvp.address
 
+p Song Requests:
+p = @rsvp.song_requests
+
 
 = link_to "Delete", rsvp_path(@rsvp), class: "btn btn-danger", method: :delete, data: {confirm: "Are you sure you want to delete the invite for #{@rsvp.name}?"}
