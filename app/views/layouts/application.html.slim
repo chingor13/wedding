@@ -40,8 +40,6 @@ html[lang="en-us"]
                   = link_to "RSVP", rsvps_path
                 li
                   = link_to "Directions", directions_path
-                li
-                  = link_to "Contact Us", contact_us_path
 
     .container
       = render "layouts/flash", flash: flash
@@ -63,8 +61,6 @@ html[lang="en-us"]
               = link_to "RSVP", rsvps_path
             li
               = link_to "Directions", directions_path
-            li
-              = link_to "Contact Us", contact_us_path
         .col-sm-9.col-xs-12
           = yield
       footer
