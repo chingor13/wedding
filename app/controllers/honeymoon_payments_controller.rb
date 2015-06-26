@@ -1,6 +1,7 @@
 class HoneymoonPaymentsController < ApplicationController
 
   def index
+    redirect_to new_honeymoon_payment_path
   end
 
   def new
