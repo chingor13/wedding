@@ -10,7 +10,7 @@ class HoneymoonPayment < ActiveRecord::Base
 
   def charge_stripe
     charge = Stripe::Charge.create({
-      amount: amount,
+      amount: amount * 100,
       currency: "usd",
       card: card,
       description: "description"
