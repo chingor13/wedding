@@ -33,7 +33,7 @@ h1 RSVP
                   | No
             td = rsvp.potential_attending
             td = link_to rsvp.name, rsvp
-            td = rsvp.song_requests
+            td = simple_format rsvp.song_requests
             td
               - if rsvp.notes.present?
                 = link_to "#", title: rsvp.notes, data: {toggle: "tooltip"} do
