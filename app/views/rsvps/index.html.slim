@@ -17,7 +17,7 @@ h1 RSVP
           th Attending
           th Max
           th Name
-          th Email
+          th Song Requests
           th
       tbody
         - @rsvps.each do |rsvp|
@@ -33,7 +33,7 @@ h1 RSVP
                   | No
             td = rsvp.potential_attending
             td = link_to rsvp.name, rsvp
-            td = rsvp.email_address
+            td = rsvp.song_requests
             td
               - if rsvp.notes.present?
                 = link_to "#", title: rsvp.notes, data: {toggle: "tooltip"} do
