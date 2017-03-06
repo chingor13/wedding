@@ -5,13 +5,14 @@
 #   gem 'sqlite3'
 #
 default: &default
-  adapter: <%= ENV.fetch('DB_ADAPTER', 'postgresql') %>
+  adapter: <%= ENV.fetch('DB_ADAPTER', 'mysql2') %>
   pool: 5
   timeout: 5000
   host: <%= ENV.fetch('DB_HOST', 'localhost') %>
-  port: <%= ENV.fetch('DB_PORT', 5432) %>
+  port: <%= ENV.fetch('DB_PORT', 3306) %>
   username: <%= ENV.fetch('DB_USER', 'web') %>
-  password: <%= ENV.fetch('DB_PASSWORD', 'web') %>
+  password: <%= ENV.fetch('DB_PASS', 'web') %>
+  socket: <%= ENV['DB_SOCKET'] %>
 
 development:
   <<: *default
