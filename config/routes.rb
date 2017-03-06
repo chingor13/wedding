@@ -25,6 +25,8 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback', to: 'sessions#callback'
   get '/logout', to: 'sessions#destroy', as: 'logout'
 
+  get '/_ah/health', to: proc { [200, {}, ['']]}
+
   root to: "homepages#index"
 
 end
