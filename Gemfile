@@ -35,7 +35,7 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 
 gem 'carrierwave'
-gem 'fog'
+gem 'fog', '>= 1.28.0'
 
 gem 'prawn'
 gem 'prawn-rails'
