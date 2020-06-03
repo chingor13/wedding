@@ -72,7 +72,7 @@ end
 
 group :test do
   gem 'capybara'
-  gem 'poltergeist'
+  gem 'poltergeist', '>= 1.6.0'
   gem 'webmock'
   gem 'mocha', require: false
 end
