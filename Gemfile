@@ -31,8 +31,8 @@ gem 'rqrcode_png'
 
 gem 'aws-sdk', '~> 1.44'
 
-gem 'omniauth'
-gem 'omniauth-facebook'
+gem 'omniauth', '>= 2.0.0'
+gem 'omniauth-facebook', '>= 2.0.1'
 
 gem 'carrierwave'
 gem 'fog'
