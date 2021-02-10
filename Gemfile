@@ -34,7 +34,7 @@ gem 'aws-sdk', '~> 1.44'
 gem 'omniauth'
 gem 'omniauth-facebook'
 
-gem 'carrierwave'
+gem 'carrierwave', '>= 1.3.2'
 gem 'fog'
 
 gem 'prawn'
