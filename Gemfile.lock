@@ -38,7 +38,8 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
-    addressable (2.3.8)
+    addressable (2.8.1)
+      public_suffix (>= 2.0.2, < 6.0)
     arel (6.0.0)
     aws-sdk (1.64.0)
       aws-sdk-v1 (= 1.64.0)
@@ -235,6 +236,7 @@ GEM
       prawn-table
       rails (>= 3.1.0)
     prawn-table (0.2.1)
+    public_suffix (5.0.0)
     rack (1.6.0)
     rack-test (0.6.3)
       rack (>= 1.0)
